@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { Store } from './pages/store';
+import { Home } from './pages/home';
+import { Link, Route , Routes } from 'react-router-dom';
 import './App.css'
 
 function App() {
@@ -14,14 +14,16 @@ function App() {
     <>
        <Navbar bg="dark" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+        <Link className="headerLink nav-link" to="/">Home</Link>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+          <Link className="headerLink nav-link" color='white' to="/store">Store</Link>
           </Nav>
-        </Container>
+        </Container> 
       </Navbar>
+      <Routes>
+        <Route path="/" element={<Home/>}></Route>
+        <Route path="/store" element={<Store/>} ></Route>
+      </Routes>
     </>
   )
 }
