@@ -13,6 +13,8 @@ function App() {
 
   return (
     <>
+
+    
         <Navbar bg="dark" data-bs-theme="dark" expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand  as={Link} to={"/"} >React-Bootstrap</Navbar.Brand>
@@ -28,6 +30,7 @@ function App() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    <Store></Store>
       <Routes>
         <Route path="/" element={<Home/>}></Route>
         <Route path="/store" element={<Store/>} ></Route>
