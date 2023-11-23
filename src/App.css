@@ -7,7 +7,15 @@
 {
 color: white;
 }
-
+.cardFix{
+margin: 1rem;
+}
+.cardTitleFix {
+   height: 48px;
+   overflow-y: hidden;
+    width: 100%;
+  
+  }
 .logo {
   height: 6em;
   padding: 1.5em;

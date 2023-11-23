@@ -1,5 +1,10 @@
 import { json } from "react-router-dom";
 import { useEffect, useState } from 'react'
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { Container } from "react-bootstrap";
 export function Store()
 {
     let [check, setCheck] = useState(false);
@@ -19,7 +24,7 @@ export function Store()
 
 function createArray()
 {
-   for (let i = 1; i < 8; i++) {
+   for (let i = 1; i < 11; i++) {
       getItem(i).then(json=> setItem(prevState => ([...prevState, json])));
       
    }
@@ -29,19 +34,35 @@ function ItemsDisplay({array, props }) {
    return( 
      <> 
    
-     
+     <Container fluid>
+<Row> 
+
+
+
+
+    
        { array.map((items) =>{
        
          return (
- 
-          
-         
-         <img src={items.image} width={150} height={150}></img>
+          <Col xs> 
+          <Card bg="dark" text="light" className="cardFix" style={{ width: '18rem' }}>
+          <Card.Img variant="top" src={items.image} width={12} height={180} />
+          <Card.Body>
+            <Card.Title variant="light" className="cardTitleFix">{items.title}</Card.Title>
+            <Card.Text>
+              ${items.price}
+            </Card.Text>
+            <Button variant="primary">Add to cart</Button>
+          </Card.Body>
+        </Card>
+        </Col>
       
           )
         
        } 
        ) }   
+       </Row>
+        </Container>
      </>
     
        );
