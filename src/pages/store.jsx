@@ -24,16 +24,32 @@ function createArray()
       
    }
 }
-//   useEffect(()=> { async function getItem(){
-//     //create loop to retrieve multiple items
-//         fetch('https://fakestoreapi.com/products/1')
-//         .then(res=>res.json())
-//         .then(json=>setItem(prevState =>([...prevState, json])))
-//         .then(setCheck(true));
+
+function ItemsDisplay({array, props }) {
+   return( 
+     <> 
+   
+     
+       { array.map((items) =>{
+       
+         return (
+ 
+          
+         
+         <img src={items.image} width={150} height={150}></img>
+      
+          )
         
-//         }
-//         getItem();
-// }, []);
+       } 
+       ) }   
+     </>
+    
+       );
+       
+ }
+
+
+
 useEffect(() => {
    const timer = setTimeout(() => {
      createArray()
@@ -43,7 +59,7 @@ useEffect(() => {
 
             return( 
                <>
-            {item[0] != undefined ?<img src={item[0].image} width={150} height={150}/> : <h2>Not Hello</h2>}
+            {item[6] != undefined ? <ItemsDisplay array={item}/> : <h1></h1>}
             <button type="button" onClick={()=> console.log(item)}>Button</button>
                </> 
             )
