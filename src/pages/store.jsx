@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Container } from "react-bootstrap";
 import { TotalContext, CartContext } from "../App";
-export function Store()
+export function Store({setcartNum})
 {
     let [check, setCheck] = useState(false);
     //change to an array of objects
@@ -38,6 +38,7 @@ function addtoCart(item)
 {
 setCart(prevState => ([...prevState, item]));
 setTotal(total + item.price);
+setcartNum(cart.length + 1);
 
 }
 

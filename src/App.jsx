@@ -14,6 +14,7 @@ function App() {
   const [count, setCount] = useState(0)
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
+  const [cartNum, setcartNum] = useState(cart.length);
 
   return (
     <>
@@ -29,14 +30,14 @@ function App() {
             <Nav.Link as={Link} to={"/store"} >Store</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link>Cart</Nav.Link>
+            <Nav.Link>Cart ({cartNum})</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
       <Routes>
         <Route path="/" element={<Home/>}></Route>
-        <Route path="/store" element={<Store/>} ></Route>
+        <Route path="/store" element={<Store setcartNum={setcartNum}/>} ></Route>
       </Routes>
       </TotalContext.Provider>
       </CartContext.Provider>
