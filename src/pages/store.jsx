@@ -1,15 +1,18 @@
 import { json } from "react-router-dom";
-import { useEffect, useState } from 'react'
+import { useEffect, useState, createContext, useContext } from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Container } from "react-bootstrap";
+import { TotalContext, CartContext } from "../App";
 export function Store()
 {
     let [check, setCheck] = useState(false);
     //change to an array of objects
     let [item, setItem] = useState([]);
+    let [cart, setCart] = useContext(CartContext);
+    const [total, setTotal] = useContext(TotalContext);
       
     
     async function getItem(num)
@@ -29,6 +32,15 @@ function createArray()
       
    }
 }
+
+
+function addtoCart(item)
+{
+setCart(prevState => ([...prevState, item]));
+setTotal(total + item.price);
+
+}
+
 
 function ItemsDisplay({array, props }) {
    return( 
@@ -52,7 +64,7 @@ function ItemsDisplay({array, props }) {
             <Card.Text>
               ${items.price}
             </Card.Text>
-            <Button variant="primary">Add to cart</Button>
+            <Button variant="primary" onClick={() => addtoCart(items)}>Add to cart</Button>
           </Card.Body>
         </Card>
         </Col>
@@ -80,8 +92,9 @@ useEffect(() => {
 
             return( 
                <>
-            {item[6] != undefined ? <ItemsDisplay array={item}/> : <h1></h1>}
-            <button type="button" onClick={()=> console.log(item)}>Button</button>
+            {item[9] != undefined ? <ItemsDisplay array={item}/> : <h1></h1>}
+            <button type="button" onClick={()=> console.log(cart)}>Button</button>
+            <button type="button" onClick={()=> console.log(total)}>Button2</button>
                </> 
             )
 }
