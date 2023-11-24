@@ -6,6 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Store } from './pages/store';
 import { Home } from './pages/home';
 import { Link, Route , Routes } from 'react-router-dom';
+import { Cart } from './pages/cart';
 import './App.css'
 
 export const TotalContext = createContext();
@@ -30,7 +31,7 @@ function App() {
             <Nav.Link as={Link} to={"/store"} >Store</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link>Cart ({cartNum})</Nav.Link>
+            <Nav.Link as={Link} to={"/cart"}>Cart ({cartNum})</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -38,6 +39,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}></Route>
         <Route path="/store" element={<Store setcartNum={setcartNum}/>} ></Route>
+        <Route path="/cart" element={<Cart itemsinCart={cart}></Cart>}></Route>
       </Routes>
       </TotalContext.Provider>
       </CartContext.Provider>
