@@ -3,18 +3,19 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Container } from "react-bootstrap";
-export function Cart({itemsinCart}) {
-
+import { useEffect, useState, createContext, useContext } from 'react'
+import { TotalContext, CartContext } from "../App";
+export function Cart({itemsinCart, setcartNum}) {
+  const [total, setTotal] = useContext(TotalContext);
+  let [cart, setCart] = useContext(CartContext);
     return( 
         <> 
       
         <Container fluid>
-   <Row> 
-   
-   
-   
-   
-       
+   <Row className="justify-content-md-center"> 
+
+   <h1>Total: ${total}</h1>
+   <h3>Cart:</h3>
           { itemsinCart.map((items) =>{
           
             return (
@@ -35,7 +36,12 @@ export function Cart({itemsinCart}) {
            
           } 
           ) }   
+          
           </Row>
+          <button onClick={() => {setCart([]) 
+          setTotal(0) 
+          setcartNum(0)}
+          }>Check out</button>
            </Container>
         </>
        

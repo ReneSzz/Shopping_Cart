@@ -38,8 +38,8 @@ function App() {
     </Navbar>
       <Routes>
         <Route path="/" element={<Home/>}></Route>
-        <Route path="/store" element={<Store setcartNum={setcartNum}/>} ></Route>
-        <Route path="/cart" element={<Cart itemsinCart={cart}></Cart>}></Route>
+        <Route path="/store" element={<Store setcartNum={setcartNum} total={total}/>} ></Route>
+        <Route path="/cart" element={<Cart setcartNum={setcartNum} itemsinCart={cart}></Cart>}></Route>
       </Routes>
       </TotalContext.Provider>
       </CartContext.Provider>
